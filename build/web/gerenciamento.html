@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head> 
+        <title>Página do Administrador</title>
+        <script src="js/admin.js" type="text/javascript"></script>
+         <link rel="stylesheet" href="css/administrador.css" type="text/css" >
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <p class="titulo"> Administrador </p>
+        
+        <div class="tab">
+        <button id=b01 class="botao"> Usuários</button>
+        <button id=b02 class="botao"> Chamados</button>
+    </div>
+        <div id=c01 class="conteudo">
+            Lista de usuários<br>
+            <table class="tabela" id="tabelaUsuario" border="1">
+                <tr>
+                    <th>Usuario</th>
+                    <th>Data</th>
+                    <th>Hora de criacao</th>
+                    <th>Tipo</th>
+                    <th> Cadastro </th>
+                    <th>Remover</th>
+                    <th>Mensagem</th>       
+                </tr>
+            </table>
+        </div>
+        <div id=c02 class="conteudo">Lista de chamados criados<br>
+            <form>
+                <table class="tabela" id="tabelaChamado">
+                <tr>
+                    <th>titulo</th>
+                    <th>Usuario</th>
+                    <th>Data</th>
+                    <th>Hora de criacao</th>
+                    <th>Tipo</th>
+                    <th>Remover</th>
+                    <th>Mensagem</th>       
+                </tr>
+            </table>
+           
+        </form>
+        </div>
+        
+    </body>
+</html>

@@ -1,0 +1,145 @@
+img {
+	width: 15%;
+	height: 15%;
+}
+
+p {
+	color: blue;
+}
+
+div {
+	background-color: pink;
+	align-content: stretch;
+	display: inline;
+}
+
+.menu {
+	margin: 0;
+	font-size: 80% /*smaller*/;
+	font-weight: bold;
+	line-height: 1.1;
+	text-align: center;
+	position: fixed;
+	top: 2em;
+	left: auto;
+	width: 8.5em;
+	right: 2em;
+}
+
+
+    
+
+
+.mostrar {
+    
+    display: box;
+}
+
+.naoMostrar{
+    
+    display: none;
+    
+}
+   
+
+  
+  #area
+  {
+    position:absolute;
+    left:37%;
+    top:15%;
+    width:500px;
+    height:700px;
+   background-color: white;
+   
+  }
+  
+  
+  
+  fieldset
+  {
+    
+    width:400px;
+    height:350px;
+    background-color:greenyellow;
+  }
+  
+
+
+
+  #formulario label
+  {
+    position:absolute;
+    left:19px;
+   
+  }
+  
+  
+  
+  textArea
+  {
+    position:relative;
+    width:90%;
+    border: 1px solid ;
+    font-size: 14pt;
+    
+  }
+  
+  select:hover{
+      background-color: yellow;
+      
+  }
+  
+  #btnlimpar:hover{
+      background-color: yellow;
+  }
+  
+  
+  #btnEnviar:hover{
+      background-color: yellow;
+      
+  }
+  /** imagens **/
+  
+  
+  .banner {
+      
+      border:cadetblue;
+      width:30%;
+      height: 30%;
+  }
+  
+  
+  /** tela login **/
+  
+  div.login {
+      
+      display :block;
+      margin:auto;
+      top: 20%;
+      
+      
+  }
+  
+ /** formularios **/
+ 
+ label {
+     
+     font-weight: bold;
+      margin-right:5px;
+     
+ }
+
+ input{
+     
+     
+     position: relative;
+     margin-bottom: 40px;
+     
+     
+ }
+
+  
+ div.mostrar{
+     border:black;
+ }
