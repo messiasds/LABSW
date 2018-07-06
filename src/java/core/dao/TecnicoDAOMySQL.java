@@ -32,6 +32,7 @@ public class TecnicoDAOMySQL implements TecnicoDAO {
             //                       "user=usuario&password=usuario123");
         } catch (Exception e){
             System.out.print("Erro de conexão...PapelDAOMysql");
+            e.printStackTrace();
         }
     }
     

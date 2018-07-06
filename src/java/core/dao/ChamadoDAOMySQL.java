@@ -9,6 +9,8 @@ import api.dao.ChamadoDAO;
 import api.modelo.Chamado;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 /**
  *
@@ -20,19 +22,17 @@ public class ChamadoDAOMySQL implements  ChamadoDAO {
     private Connection conexao;
     
     public ChamadoDAOMySQL(){
+        
+        
+        
         try{
-            //Class.forName("com.mysql.jdbc.Driver");
-            Class.forName("org.mariadb.jdbc.Driver");
-            /* Abertura de conexão: */
-            /* Notar que poderia ser substituida por
-            uma chamada de get instance de uma conexão já aberta. 
-            */
-            conexao = DriverManager.getConnection("jdbc:mariadb://172.16.7.63:3306/agenda","usuario", "usuario123");
-
-            //conexao = DriverManager.getConnection("jdbc:mysql://150.163.17.237:3306/agenda?" +
-            //                       "user=usuario&password=usuario123");
+            Class.forName("com.mysql.jdbc.Driver");
+           
+            
+            conexao = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/dbBIOS?" +
+                                   "user=root&password=fatec");
         } catch (Exception e){
-            System.out.print("Erro de conexão...PapelDAOMysql");
+            System.out.print("Erro de conexão...ChamadoDAOMysql");
             e.printStackTrace();
         }
     }
@@ -41,12 +41,64 @@ public class ChamadoDAOMySQL implements  ChamadoDAO {
 
     @Override
     public void insert(Chamado chamado) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        String sql="inser into dbBIOS.chamado (titulo,descicao,estado,idCliente,idTecnico)" +
+                   " values(?,?,?,?,?)";
+         
+       
+        try {
+            PreparedStatement ps = conexao.prepareStatement(sql);
+            ps.setString(1,chamado.getTitulo());
+            ps.setString(2,chamado.getDescricao());
+            ps.setBoolean(3, chamado.isEstado());
+            ps.setInt(4,chamado.getCliente().getId());
+            ps.setInt(5,999); // mudar essa gambiarra
+            
+            ps.executeLargeUpdate();
+            ps.close();
+            conexao.close();
+            
+            
+        } catch ( Exception e) {
+            System.out.print("Erro de enserção ...ChamadoDAOMysql");
+            e.printStackTrace();
+            
+            
+        }
+        
+       
     }
 
     @Override
     public Chamado findById(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        Chamado chamado=null;
+        
+        String sql= "select from dbBIOS.chamado where id=?";
+        
+        
+        try{
+        PreparedStatement ps= conexao.prepareStatement(sql);
+        ps.setInt(1, id);
+        ResultSet rs= ps.executeQuery();
+        rs.next();
+        
+        chamado.setTitulo(rs.getString("titulo"));
+        chamado.setId(rs.getInt("id"));
+        chamado.setDescricao(rs.getString("descricao"));
+        
+       
+        
+       
+     
+        }catch(Exception e){
+            System.out.println("Erro findByid ChamadoDAO");
+            e.printStackTrace();
+            
+        }
+        
+        
+        return null;
     }
 
     @Override

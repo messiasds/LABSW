@@ -5,6 +5,8 @@
  */
 package api.modelo;
 
+import java.util.Date;
+
 /**
  *
  * @author messias
@@ -15,6 +17,26 @@ public class Mensagem {
     private String conteudo;
     private Cliente usuario;
     private Tecnico tecnico;
+    private Date hora;
+    private Date data;
+
+    public Date getHora() {
+        return hora;
+    }
+
+    public void setHora(Date hora) {
+        this.hora = hora;
+    }
+
+    public Date getData() {
+        return data;
+    }
+
+    public void setData(Date data) {
+        this.data = data;
+    }
+    
+    
 
     public int getId() {
         return id;

@@ -16,15 +16,15 @@ public class Chamado {
     private String descricao;
     private boolean estado;
     
-    Cliente cliente;
-    Tecnico tecnico;
-    Mensagem mensagem;
+    private Cliente cliente;
+    private Tecnico tecnico;
+    private Mensagem mensagem = null;
 
-    public Cliente getUsuario() {
+    public Cliente getCliente() {
         return cliente;
     }
 
-    public void setUsuario(Cliente cliente) {
+    public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
 
