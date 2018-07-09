@@ -5,17 +5,42 @@
  */
 package api.modelo;
 
+import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+
+
 /**
  *
  * @author messias
  */
+
+@Entity
 public class Cliente {
     
+    @Id
+    @GeneratedValue
     private int id;
+    
+    @Column
     private String nome;
+    
+    @Column
     private String senha;
+    
+    @Column
     private String email;
+    
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name="cliente_chamado_FK")
+    private List<Chamado> chamados;
 
+    
     public int getId() {
         return id;
     }

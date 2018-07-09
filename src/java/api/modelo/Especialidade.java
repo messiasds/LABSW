@@ -5,15 +5,27 @@
  */
 package api.modelo;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 /**
  *
  * @author messias
  */
+@Entity
 public class Especialidade {
     
+    @Id
+    @GeneratedValue
     private int id;
+    
+    @Column
     private String nome;
 
+    
+    
     public int getId() {
         return id;
     }

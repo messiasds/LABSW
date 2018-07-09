@@ -5,8 +5,13 @@
  */
 package web.servlet;
 
+import api.modelo.Chamado;
+import api.modelo.Cliente;
+import api.servico.ServicoChamado;
+import api.servico.ServicoCliente;
+import core.servico.ServicoChamadoImp;
+import core.servico.ServicoClienteImp;
 import java.io.IOException;
-import javax.servlet.GenericServlet;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
@@ -26,7 +31,29 @@ public class Inicio extends HttpServlet{
     public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException {
         
     ServletContext contexto = getServletContext();
-    contexto.getRequestDispatcher("/jsp/login.jsp").forward(req, res);
+    //contexto.getRequestDispatcher("/jsp/login.jsp").forward(req, res);
+    
+    ServicoCliente serv = new ServicoClienteImp();
+    Cliente c =serv.pesquisarId(10);
+        System.out.println(c.getNome());
+        
+         System.out.println("TESTE JPA");
+         
+         ServicoChamado chServ = new ServicoChamadoImp();
+         Chamado chmd = new Chamado();
+         chmd.setTitulo("TESTANDO JPA");
+         chmd.setDescricao("TESTE DO JPA COM SERVICO");
+         chmd.setEstado(true);
+         //chmd.setMensagem(null);
+         //chmd.setCliente(null);
+         //chmd.setTecnico(null);
+         chmd.setId(40);
+         
+         chServ.incluirChamado(chmd);
+         
+         
+        
+        
     
            
     }

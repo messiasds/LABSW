@@ -25,7 +25,7 @@ public class ClienteDAOMySQL implements ClienteDAO {
     
     public ClienteDAOMySQL(){
         try{
-            Class.forName("com.mysql.jdbc.Driver");
+           Class.forName("com.mysql.cj.jdbc.Driver");
             
             /* Abertura de conexão: */
             /* Notar que poderia ser substituida por
@@ -46,7 +46,7 @@ public class ClienteDAOMySQL implements ClienteDAO {
     @Override
     public void insert(Cliente cliente) {
             
-        String sql = "insert into dbBIOS.cliente (nome,email,senha) values (?,?,?)";
+        String sql = "insert into dbBIOS.Cliente (nome,email,senha) values (?,?,?)";
         
         
         try {
@@ -56,7 +56,7 @@ public class ClienteDAOMySQL implements ClienteDAO {
             ps.setString(3,cliente.getSenha());
             ps.executeUpdate();
             ps.close();
-            conexao.close();
+            //conexao.close();
             
         } catch (SQLException ex) {
             Logger.getLogger(ClienteDAOMySQL.class.getName()).log(Level.SEVERE, null, ex);
@@ -72,7 +72,7 @@ public class ClienteDAOMySQL implements ClienteDAO {
                 
         
         try{        
-            PreparedStatement comandoSQLp = conexao.prepareStatement("select * from dbBIOS.cliente where id = ?");  
+            PreparedStatement comandoSQLp = conexao.prepareStatement("select * from dbBIOS.Cliente where id = ?");  
             comandoSQLp.setString(1, String.valueOf(id));
             ResultSet rs = comandoSQLp.executeQuery();
             rs.next();
@@ -102,7 +102,7 @@ public class ClienteDAOMySQL implements ClienteDAO {
     @Override
     public void update(Cliente cliente) {
         
-        String sql = "update into dbBIOS.cliente set nome= ? email = ? senha =? where id=?";
+        String sql = "update into dbBIOS.Cliente set nome= ? email = ? senha =? where id=?";
         
         
         try {
@@ -116,8 +116,9 @@ public class ClienteDAOMySQL implements ClienteDAO {
             ps.close();
             conexao.close();
             
-        } catch (SQLException ex) {
-            Logger.getLogger(ClienteDAOMySQL.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception e) {
+            //Logger.getLogger(ClienteDAOMySQL.class.getName()).log(Level.SEVERE, null, ex);
+            e.printStackTrace();
         }
         
         

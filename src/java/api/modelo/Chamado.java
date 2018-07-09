@@ -5,20 +5,41 @@
  */
 package api.modelo;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
 /**
  *
  * @author messias
+ * 
+ * 
  */
+
+@Entity
 public class Chamado {
     
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    
+    @Column
     private String titulo;
+    
+    @Column
     private String descricao;
+    @Column
     private boolean estado;
     
+    @ManyToOne(fetch =FetchType.EAGER)
     private Cliente cliente;
-    private Tecnico tecnico;
-    private Mensagem mensagem = null;
+    
+    //private Tecnico tecnico;
+    //private Mensagem mensagem = null;
 
     public Cliente getCliente() {
         return cliente;
@@ -28,21 +49,21 @@ public class Chamado {
         this.cliente = cliente;
     }
 
-    public Tecnico getTecnico() {
-        return tecnico;
-    }
+    //public Tecnico getTecnico() {
+      //  return tecnico;
+    //}
 
-    public void setTecnico(Tecnico tecnico) {
-        this.tecnico = tecnico;
-    }
+   // public void setTecnico(Tecnico tecnico) {
+     //   this.tecnico = tecnico;
+    //}
 
-    public Mensagem getMensagem() {
-        return mensagem;
-    }
+    //public Mensagem getMensagem() {
+      //  return mensagem;
+    //}
 
-    public void setMensagem(Mensagem mensagem) {
-        this.mensagem = mensagem;
-    }
+    //public void setMensagem(Mensagem mensagem) {
+      //  this.mensagem = mensagem;
+    //}
     
     
 
