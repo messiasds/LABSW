@@ -5,16 +5,17 @@
  */
 package web.servlet;
 
+import api.modelo.Chamado;
+import api.servico.ServicoChamado;
+import core.servico.ServicoChamadoImp;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 /**
  *
@@ -25,9 +26,26 @@ public class Principal extends HttpServlet {
     
     public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException {
         
-    ServletContext contexto = getServletContext();
-    contexto.getRequestDispatcher("/jsp/principal.jsp").forward(req, res);
+        List<Chamado> lista;
+                
+        int id=4 ; //usuario messias
+        
+        ServicoChamado chamadoServ = new ServicoChamadoImp();
+        
+        // Busca no BD as chamadas aberta pelo usuario Logado
+        lista = chamadoServ.buscarTodosChamadosCliente(id);
+        
+        // teste daquele jeito...
+        for(Chamado c:lista)
+            System.out.println(c.getDescricao()+ "nome " + c.getCliente().getNome());
+      
+        //redireciona 
+        ServletContext contexto = getServletContext();
+        req.setAttribute("chamados",lista);
+        contexto.getRequestDispatcher("/jsp/principal.jsp").forward(req, res);
     
+        
+            
            
     }
     

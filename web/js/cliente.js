@@ -89,8 +89,11 @@ chamado2 = {
 
 var listaChamados = [objJson, chamado2];
 
-function mostrarDetalhe(objeto) {
-
+function mostrarDetalhe(id) {
+    
+    
+    
+    
     detalhe = document.getElementById('detalhes');
     categoria = document.getElementById('idCategoria');
     categoria.innerHTML = objJson["categoria"];
@@ -197,7 +200,9 @@ function eventos() {
 
     popDetalhe = document.getElementById('detalhes');
     popDetalhe.classList.add('naoMostrar');
-
+    
+    
+   
     btnDetalhe = document.getElementById('btnDetalhes');
     btnDetalhe.addEventListener('click', function () {
         mostrarDetalhe();
@@ -281,8 +286,8 @@ function carregarListaChamado() {
 
 
 window.onload = function () {
-    carregarListaChamado();
-    eventos();
+   // carregarListaChamado();
+   //eventos();
 };
 
 

@@ -25,8 +25,9 @@
 </div>
     
 	<div id="area">   
-            <form id="formulario">
+            <form id="formulario" method="post" action="chamado">
                 <fieldset>
+                    titulo: <input type="text" name="titulo"><br>
                     <legend> Cadastre seu problema </legend>
                     <select id="categoria">
 				<option>Notebook</option>
@@ -38,11 +39,13 @@
                     <select id="subcategoria">
 				<option>WINDOWS</option>
                     </select><br>
-		<textarea id="txtProblema" rows="10"></textarea><br>
-		<input type="button" value="enviar" id="btnEnviar">
-		<input type="reset" value="limpar" id="btnlimpar">
+		<textarea id="txtProblema" rows="10" name="descricao"></textarea><br>
+		<input type="submit" value="enviar" id="btnEnviar" name="enviar">
+		<input type="reset" value="limpar" id="btnlimpar" >
                
                 </fieldset>
+                </form>
+
 	</div>
 
 </body>

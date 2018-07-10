@@ -40,8 +40,12 @@ public class ServicoChamadoTeste {
         cliente1.setEmail("teste@teste");
         cliente1.setSenha("123");
         
+        cliente2= new Cliente();
+        cliente2.setNome("teste2");
+        cliente2.setEmail("teste2@teste");
+        cliente2.setSenha("123");
+        
         chamado1 = new Chamado();
-        //chamado1.setId(10);
         chamado1.setDescricao("testando chamado JPA");
         chamado1.setEstado(true);
         //chamado1.setMensagem(null);
@@ -49,13 +53,30 @@ public class ServicoChamadoTeste {
         chamado1.setTitulo("teste chamado1");
         chamado1.setCliente(cliente1);
         
+        chamado2 = new Chamado();
+        chamado2.setDescricao("testando chamado JPA 2");
+        chamado2.setEstado(true);
+        //chamado1.setMensagem(null);
+        //chamado1.setTecnico(null);
+        chamado2.setTitulo("teste chamado1");
+        chamado2.setCliente(cliente1);
+        
+        chamado3 = new Chamado();
+        chamado3.setDescricao("testando chamado JPA 3");
+        chamado3.setEstado(true);
+        //chamado1.setMensagem(null);
+        //chamado1.setTecnico(null);
+        chamado3.setTitulo("teste chamado 3");
+        chamado3.setCliente(cliente1);
+        
+        
     }
     
     
     // teste
     
     @Test
-    public void testarInsercaoChamado(){
+    public void testeInsert(){
         
         String descricao="testando chamado JPA";
         
@@ -66,7 +87,40 @@ public class ServicoChamadoTeste {
     }
     
     
+    @Test 
+    public void testeDelete(){
+        
+      
+        chamadoServ.incluirChamado(chamado3);
+        Assert.assertNotNull(chamadoServ.pesquisarId(1));
+        chamadoServ.deletarChamado(1);
+        Assert.assertNull(chamadoServ.pesquisarId(1));
+        
+    }
     
+    
+    @Test
+    public void testeUpdate(){
+        
+        String DescricaoNova="ATUALIZADO";
+        
+        
+        Chamado atualizado = new Chamado();
+        atualizado.setId(1); // mesmo id do chamado3
+        atualizado.setTitulo(chamado3.getTitulo());
+        atualizado.setCliente(cliente1);
+        atualizado.setEstado(chamado3.isEstado());
+        atualizado.setDescricao(DescricaoNova); // altera a descricao
+        
+        chamadoServ.incluirChamado(chamado3);
+        chamadoServ.atualizarChamado(atualizado);
+        
+        Chamado resp = chamadoServ.pesquisarId(1);
+        
+        Assert.assertEquals(DescricaoNova, resp.getDescricao());
+        
+        
+    }
     
     
     

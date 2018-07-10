@@ -7,9 +7,11 @@ package core.dao;
 
 import api.dao.ChamadoDAO;
 import api.modelo.Chamado;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 /**
  *
@@ -57,8 +59,32 @@ public class ChamadoDAOJPA implements  ChamadoDAO {
     }
 
     @Override
-    public void delete(Chamado chamado) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void delete(int id) {
+        
+        
+        Chamado r = em.find(Chamado.class, id);
+        
+        em.getTransaction().begin();
+        em.remove(r);
+        em.getTransaction().commit();
     }
+
+    @Override
+    public List<Chamado> findByClienteId(int id) {
+        
+        List<Chamado> lista;
+        
+        String queryStr = "SELECT c FROM Chamado c JOIN c.cliente j WHERE j.id=:idCliente";
+    
+        Query query = em.createQuery(queryStr);
+        query.setParameter("idCliente", id);
+   
+        lista = query.getResultList();
+        return lista;
+        
+        
+    }
+    
+    
     
 }

@@ -18,9 +18,10 @@ public interface ServicoChamado {
     
     public Chamado pesquisarId(int id);
     public void incluirChamado(Chamado c);
-    public void deletarChamado(Chamado c);
+    public void deletarChamado(int id);
     public void atualizarChamado(Chamado c);
-    public List<Chamado> buscarTodosChamados(); // id do cliente
+    public List<Chamado> buscarTodosChamadosCliente(int id); // id do cliente
+    
     
             
     

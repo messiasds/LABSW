@@ -5,6 +5,7 @@
  */
 package core.servico;
 
+import api.dao.ChamadoDAO;
 import api.modelo.Chamado;
 import api.servico.ServicoChamado;
 import core.dao.ChamadoDAOJPA;
@@ -16,10 +17,11 @@ import java.util.List;
  */
 public class ServicoChamadoImp implements ServicoChamado {
     
-    ChamadoDAOJPA chamadoDao = new ChamadoDAOJPA();
+   
 
     @Override
     public Chamado pesquisarId(int id) {
+        ChamadoDAOJPA chamadoDao = new ChamadoDAOJPA();
         
         return chamadoDao.findById(id);
         
@@ -36,18 +38,25 @@ public class ServicoChamadoImp implements ServicoChamado {
            }
 
     @Override
-    public void deletarChamado(Chamado c) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void deletarChamado(int id) {
+       ChamadoDAOJPA chamadoDao = new ChamadoDAOJPA();
+       chamadoDao.delete(id);
+        
+    
     }
 
     @Override
     public void atualizarChamado(Chamado c) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+        ChamadoDAOJPA chamadoDao = new ChamadoDAOJPA();
+        chamadoDao.update(c);
+        
+           }
 
     @Override
-    public List<Chamado> buscarTodosChamados() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Chamado> buscarTodosChamadosCliente(int id) {
+        ChamadoDAO dao = new ChamadoDAOJPA();
+        return dao.findByClienteId(id);
+                   
     }
     
 }

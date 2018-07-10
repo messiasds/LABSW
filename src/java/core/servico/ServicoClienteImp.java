@@ -5,10 +5,12 @@
  */
 package core.servico;
 
+import api.dao.ChamadoDAO;
 import api.dao.ClienteDAO;
 import api.modelo.Chamado;
 import api.modelo.Cliente;
 import api.servico.ServicoCliente;
+import core.dao.ChamadoDAOJPA;
 import core.dao.ClienteDAOMySQL;
 import java.util.List;
 import web.servlet.Mensagens;
@@ -52,7 +54,10 @@ public class ServicoClienteImp implements ServicoCliente {
 
     @Override
     public List<Chamado> buscarChamados(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        ChamadoDAO dao = new ChamadoDAOJPA();
+        dao.findById(id);
+        return null;
     }
 
     @Override

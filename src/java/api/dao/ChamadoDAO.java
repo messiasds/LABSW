@@ -2,6 +2,7 @@ package api.dao;
 
 
 import api.modelo.Chamado;
+import java.util.List;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -18,7 +19,8 @@ public interface ChamadoDAO {
     public void insert(Chamado chamado);
     public Chamado findById(int id);
     public void update(Chamado chamado);
-    public void delete(Chamado chamado);
+    public void delete(int id);
+    public List<Chamado> findByClienteId(int id);
     
     
 }
